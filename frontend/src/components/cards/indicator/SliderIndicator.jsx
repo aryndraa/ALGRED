@@ -19,25 +19,30 @@ export const SliderIndicator = () => {
         setSwitchIndicator(2);
     };
 
-    const usedSpaceMode1 = fertilizerCapacity ;
+    const usedSpaceMode1 = 3 ;
     const totalSpaceMode1 = 10;
     const availableSpace1 = totalSpaceMode1 - usedSpaceMode1; 
     const usedPercentage1 = ((availableSpace1 / totalSpaceMode1) * 100).toFixed(0); 
     const capacity1 = 250;
     const adjustedCapacity1 = (capacity1 * (usedPercentage1 / 100)); 
+    const cartCon1 = 100 - usedPercentage1; 
 
     const usedSpaceMode2 = phCapacity; 
     const totalSpaceMode2 = 10;
     const availableSpace2 = totalSpaceMode2 - usedSpaceMode2; 
     const usedPercentage2 = ((availableSpace2 / totalSpaceMode2) * 100).toFixed(0); 
     const capacity2 = 250;
-    const adjustedCapacity2 = (capacity2 * (usedPercentage2 / 100)); 
+    const adjustedCapacity2 = (capacity2 * (usedPercentage2 / 100));
+    const cartCon2 = 100 - usedPercentage2; 
+
+
+
 
     const dataMode1 = {
         labels: ['Used Space', 'Remaining Space'],
         datasets: [
             {
-                data: [usedPercentage1], 
+                data: [usedPercentage1, cartCon1], 
                 backgroundColor: ['#71AEA7', '#E0E0E0'],
                 hoverBackgroundColor: ['#71AEA7', '#E0E0E0'],
                 borderWidth: 0,
@@ -49,7 +54,7 @@ export const SliderIndicator = () => {
         labels: ['Used Space', 'Remaining Space'],
         datasets: [
             {
-                data: [usedPercentage2], // Corrected order
+                data: [usedPercentage2, cartCon2], // Corrected order
                 backgroundColor: ['#FF6384', '#E0E0E0'],
                 hoverBackgroundColor: ['#FF6384', '#E0E0E0'],
                 borderWidth: 0,
@@ -74,7 +79,7 @@ export const SliderIndicator = () => {
 
     // Conditional rendering for charts based on switchIndicator
     const selectedData = switchIndicator === 1 ? dataMode1 : dataMode2;
-    const usedSpace = switchIndicator === 1 ? usedSpaceMode1 : usedSpaceMode2;
+    const usedSpace = switchIndicator === 1 ? usedPercentage1 :usedPercentage2;
     const totalSpace = switchIndicator === 1 ? totalSpaceMode1 : totalSpaceMode2;
     const percentageUsed = ((usedSpace / totalSpace) * 100).toFixed(0); // Calculate percentage
 
@@ -84,10 +89,10 @@ export const SliderIndicator = () => {
                 <div className="flex justify-between items-center w-full mb-4 relative z-[5]">
                     <h1 className='text-xl font-medium'>Tub Space</h1>
                     <div className="flex gap-2 items-center">
-                        <button onClick={handleIndicatorMode1} className={`text-sm p-2 cursor-pointer bg-white border border-neutral-400 flex items-center justify-center rounded-full ${switchIndicator === 1 ? 'bg-[#71AEA7] text-white' : ''}`}>
+                        <button onClick={handleIndicatorMode1} className={`text-sm p-2 cursor-pointer  border border-neutral-400 flex items-center justify-center rounded-full ${switchIndicator === 1 ? 'bg-[#71AEA7] text-white' : ''}`}>
                             <RiPlantFill />
                         </button>
-                        <button onClick={handleIndicatorMode2} className={`text-sm p-2 cursor-pointer bg-white border border-neutral-400 flex items-center justify-center rounded-full ${switchIndicator === 2 ? 'bg-pink-500 text-white' : ''}`}>
+                        <button onClick={handleIndicatorMode2} className={`text-sm p-2 cursor-pointer  border border-neutral-400 flex items-center justify-center rounded-full ${switchIndicator === 2 ? 'bg-pink-500 text-white' : ''}`}>
                             <RiPlantFill />
                         </button>
                     </div>
@@ -97,7 +102,7 @@ export const SliderIndicator = () => {
                     <div className='-mt-12'>
                         <Doughnut data={selectedData} options={options} className='w-full'/>
                         <h2 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-0 text-4xl font-semibold'>
-                            {usedPercentage1}%
+                            {usedSpace}%
                         </h2>
                     </div>
                     <div className='flex justify-center items-center w-full -mt-8'>

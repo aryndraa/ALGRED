@@ -10,19 +10,21 @@ export const IndicatorCard = (props) => {
 
     const {water} = Fetching()
 
-    const usedSpaceMode = 0;
+    const usedSpaceMode = water;
     const totalSpaceMode= 10;
     const availableSpace= totalSpaceMode - usedSpaceMode ; 
     const usedPercentage = ((availableSpace / totalSpaceMode) * 100).toFixed(0); 
     const capacity = 500;
     const adjustedCapacity= (capacity * (usedPercentage / 100)).toFixed(0); 
+    var cartcon = 100 - usedPercentage ;
+
 
     // Data for the chart
     const data = {
         labels: ['Used Space', 'Remaining Space'],
         datasets: [
             {
-                data: [usedPercentage],
+                data: [usedPercentage, cartcon ],
                 backgroundColor: ['#8EBEDC', '#E0E0E0'], // Colors for the chart
                 hoverBackgroundColor: ['#8EBEDC', '#E0E0E0'],
                 borderWidth: 0,
@@ -40,7 +42,7 @@ export const IndicatorCard = (props) => {
                 display: false, // Hide the legend
             },
             tooltip: {
-                enabled: false, // Disable tooltip
+                enabled: true, // Disable tooltip
             },
         },
     };

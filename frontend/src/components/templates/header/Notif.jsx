@@ -62,7 +62,7 @@ export const Notif = () => {
                       <span className="text-alert">
                         <IoAlertCircleOutline />
                       </span>
-                      Notif {index + 1}
+                      pH Not Optimal
                     </li>
                   ))}
                 </ul>
