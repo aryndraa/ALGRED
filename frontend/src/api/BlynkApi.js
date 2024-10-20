@@ -3,34 +3,7 @@ import axios from 'axios'
 import { MdOutlineSignalWifiStatusbar4Bar } from "react-icons/md";
 
 export const CheckStatus = () => {
-    const [isOnline, setIsOnline] = useState(null); 
-    const BLYNK_AUTH_TOKEN = "smzXEZ9i1wm-SGlMGhabMlCu8angOyFw"; 
-    const BLYNK_SERVER_URL = `https://sgp1.blynk.cloud`; 
-
-    const checkBlynkStatus = async () => {
-        try {
-            const response = await axios.get(`${BLYNK_SERVER_URL}/external/api/get?token=${BLYNK_AUTH_TOKEN}&pin=V8`);
-            
-            if (response.status === 200  && response.data !== 0) {
-                setIsOnline(true); 
-            } else {
-                setIsOnline(false); 
-            }
-
-            console.log(response)
-
-        } catch (error) {
-            setIsOnline(false); 
-            console.error('Error checking Blynk status:', error);
-        }
-    };
-
-    useEffect(() => {
-        checkBlynkStatus(); // Check status when component mounts
-        const intervalId = setInterval(checkBlynkStatus, 60000); // Check every minute
-
-        return () => clearInterval(intervalId); // Clean up on unmount
-    }, []);
+    const [isOnline, setIsOnline] = useState(true); 
 
     return (
         <div className="flex items-center gap-1 ">

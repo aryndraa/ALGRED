@@ -35,7 +35,7 @@ export const Dashboard = () => {
             <div className="flex-1 md:pr-5  md:border-r-2 border-neutral-400">
               <StatusCard 
                 title={'Temperature'}
-                value={temperature}
+                value={32}
                 type={'°C'}
                 status={'Optimal'}
                 color={'primary'} 
