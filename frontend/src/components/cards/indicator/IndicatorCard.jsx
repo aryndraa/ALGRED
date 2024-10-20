@@ -14,8 +14,8 @@ export const IndicatorCard = (props) => {
     const totalSpaceMode= 10;
     const availableSpace= totalSpaceMode - usedSpaceMode ; 
     const usedPercentage = ((availableSpace / totalSpaceMode) * 100).toFixed(0); 
-    const capacity = 500;
-    const adjustedCapacity= (capacity * (usedPercentage / 100)).toFixed(0); 
+    const capacity = 5;
+    const adjustedCapacity= (capacity * (usedPercentage / 100)); 
     var cartcon = 100 - usedPercentage ;
 
 
@@ -59,11 +59,11 @@ export const IndicatorCard = (props) => {
             <div className='flex justify-center items-center w-full -mt-8'>
                 <div className='text-center pr-4 border-r border-neutral-400'>
                     <h3 className='text-sm text-neutral-400'>Used Space</h3>
-                    <p className='text-xl font-medium text-neutral-500'>{adjustedCapacity} ml</p>
+                    <p className='text-xl font-medium text-neutral-500'>{adjustedCapacity} L</p>
                 </div>
                 <div className='text-center pl-4 border-l border-neutral-400'>
                     <h3 className='text-sm text-neutral-400'>Total Space</h3>
-                    <p className='text-xl font-medium text-neutral-500'>{capacity} ml</p>
+                    <p className='text-xl font-medium text-neutral-500'>{capacity} L</p>
                 </div>
             </div>
         </div>

@@ -65,7 +65,7 @@ export const Control = () => {
                         />
                     <ControlCard
                         icon={<MdOutlineHeatPump />}
-                        name={'Vibrator'}
+                        name={'Filter'}
                         onPowerClick={() => handlePowerClick('vibrator', startVibrator)}
                         />
                     <ControlCard

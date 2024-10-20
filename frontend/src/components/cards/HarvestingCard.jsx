@@ -10,23 +10,11 @@ export const HarvestingCard = () => {
                 <h2 className="text-xl md:text-xl font-medium mb-4 md:mb-5">Current State <span className="text-primary font-medium">Harvesting</span></h2>
                 <div className="flex flex-col gap-4 md:gap-4 items-center">
                     <span className="text-4xl md:text-5xl font-semibold">
-                        {farmHours === 0 ? (
-                            "None Status"
-                        ) : (
-                            `${farmHours} Hours`
-                        )}
-                        
+                       2 Days
                     </span> 
                     <p className="text-base md:text-base">
-                        left until <span className={` font-medium ${
-                            farmHours === 0? "text-neutral-400" : "text-secondary"
-                        }`}>
-                        {farmHours === 0 ? (
-                            "Standby"
-                        ) : (
-                            `Reproduction`
-                        )}
-                        
+                        left until <span className={` font-medium text-secondary`}>
+                            Reprodction
                         </span>
                     </p>
                 </div>
